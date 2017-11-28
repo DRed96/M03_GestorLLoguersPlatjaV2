@@ -9,6 +9,7 @@ package principal;
  *
  * @author Marc
  */
-public class Element {
-    
+public interface Element {
+    public void modificarElement();
+    public void mostrarElement();
 }
