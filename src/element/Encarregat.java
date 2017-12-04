@@ -1,7 +1,6 @@
 package element;
 
 import java.util.Scanner;
-import principal.Element;
 /**
  *
  * @author fta

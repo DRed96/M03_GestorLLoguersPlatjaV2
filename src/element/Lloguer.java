@@ -38,6 +38,7 @@ public class Lloguer {
     /*
      Mètodes accessors.
      */
+    /*
     public int getCodi() {
         return codi;
     }
@@ -117,7 +118,7 @@ public class Lloguer {
     public void setPagat(boolean pPagat) {
         pagat = pPagat;
     }
-
+    */
     public static Lloguer nouLloguer(Platja platja) {
         Scanner dades = new Scanner(System.in);
         String codiZonaNou = null;
