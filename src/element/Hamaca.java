@@ -8,6 +8,7 @@ import java.util.Scanner;
     public class Hamaca extends ElementLloguer{
 
     private int codi;
+    private static int codiEs;
     private static int properCodi = 0;
     private String dataAlta;
     private boolean llogat;

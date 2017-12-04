@@ -270,7 +270,7 @@ public class Platja {
         if (pos == -1) {
             for (int i = 0; i < zones.length && !trobat; i++) {
                 if (zones[i] == null) {
-                    zones[i] = Zona.novaZona();
+                    zones[i] = Zona.novaZona(null);
                     trobat = true;
                 }
             }
