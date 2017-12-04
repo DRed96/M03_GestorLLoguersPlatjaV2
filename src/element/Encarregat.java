@@ -1,13 +1,12 @@
 package element;
 
-
 import java.util.Scanner;
-
+import principal.Element;
 /**
  *
  * @author fta
  */
-public class Encarregat {
+public class Encarregat implements Element {
 
     private String dni;
     private String nom;
@@ -64,8 +63,8 @@ public class Encarregat {
 
         return new Encarregat(pDni, nomEncarregat, adrecaEncarregat);
     }
-
-    public void modificarEncarregat() {
+    @Override
+    public void modificarElement() {
         Scanner dades = new Scanner(System.in);
         System.out.println("\nDNI de l'encarregat: " + dni);
         System.out.println("\nEntra el nou DNI:");
@@ -78,8 +77,9 @@ public class Encarregat {
         System.out.println("\nEntra la nova adreça:");
         adreca = dades.nextLine();
     }
-
-    public void mostrarEncarregat() {
+    
+    @Override
+    public void mostrarElement() {
         System.out.println("\nLes dades de l'encarregat amb dni " + dni + " són:");
         System.out.println("\nNom:" + nom);
         System.out.println("\nAdreça:" + adreca);
