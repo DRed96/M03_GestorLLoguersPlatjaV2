@@ -6,7 +6,7 @@ import java.util.Scanner;
 public abstract class ElementLloguer {
     
     private int codi;
-    private static int properCodi = 0;
+    static int properCodi = 0;
     private String dataAlta;
     private boolean llogat;
 
@@ -18,38 +18,25 @@ public ElementLloguer(String pdataAlta){
       llogat = false;
 }
 
-    public int getCodi() {
-        return codi;
-    }
-
-    public void setCodi(int codi) {
-        this.codi = codi;
-    }
-
-    public static int getProperCodi() {
-        return properCodi;
-    }
-
-    public static void setProperCodi(int properCodi) {
-        ElementLloguer.properCodi = properCodi;
-    }
-
     public String getDataAlta() {
         return dataAlta;
     }
-
-    public void setDataAlta(String dataAlta) {
-        this.dataAlta = dataAlta;
-    }
-
+    
     public boolean isLlogat() {
         return llogat;
+    }
+
+    public int getCodi() {
+        return codi;
     }
 
     public void setLlogat(boolean llogat) {
         this.llogat = llogat;
     }
-    
+
+   
+
+
     public void modificarElement(){
         Scanner dades = new Scanner(System.in);
         System.out.println("\nData d'alta: " + dataAlta);

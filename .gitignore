@@ -4,14 +4,15 @@ build/
 nbbuild/
 dist/
 nbdist/
-nbactions.xml
-nb-configuration.xml
+/nbactions.xml
+/nb-configuration.xml
 
 # Class Files #
-*.class
+**.class
 
 # Package Files #
 *.jar
 *.war
 *.ear
 
+*.class

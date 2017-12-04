@@ -14,6 +14,8 @@ public class Aplicacio {
     private static Platja platjaActual = null; //PlatjaSeleccionada
 
     public static void main(String[] args) {
+        //Zona test = Zona.novaZona("");
+        
         menuPrincipal();
     }
 

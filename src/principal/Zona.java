@@ -4,16 +4,14 @@ import element.Velomar;
 import element.Ombrella;
 import element.Lloguer;
 import element.Encarregat;
+import element.Element;
+import element.ElementLloguer;
 import java.util.Scanner;
-
-class ElementLloguer{
-
-}
 /**
  *
  * @author fta
  */
-public class Zona {
+public class Zona implements Element{
 
     private String codi;
     private Lloguer lloguers[];
@@ -35,10 +33,6 @@ public class Zona {
     /*
      Mètodes accessors.
      */
-    public ElementLloguer getElementLloguer(int i){
-        return elements[i];
-    }
-    
     
     /*
     public String getCodi() {
@@ -88,13 +82,17 @@ public class Zona {
     public void setEncarregats(Encarregat[] encarregats) {
         this.encarregats = encarregats;
     }
+    
+    public ElementLloguer getElementLloguer(int i){
+        return elements[i];
+    }
     */
     /*
         
     */
     public static Zona novaZona(String codi) {
         Zona novaZona;
-        if(codi.isEmpty()== true){
+        if(codi != null && codi.isEmpty()== true){
             Scanner dades = new Scanner(System.in);
             String in;
             System.out.println("Codi de la zona:");
@@ -107,8 +105,9 @@ public class Zona {
 
         return novaZona;
     }
-
-    public void mostrarZona() {
+    
+    @Override
+    public void mostrarElement(){
         System.out.println("\nLes dades de la zona amb codi " + codi + " són:");
 
         System.out.println("\nLloguers:");
@@ -135,11 +134,18 @@ public class Zona {
         System.out.println("\nEncarregats:");
         for (int i = 0; i < encarregats.length; i++) {
             if (encarregats[i] != null) {
-                encarregats[i].mostrarEncarregat();
+                encarregats[i].mostrarElement();
             }
         }
     }
 
+    @Override
+    public void modificarElement() {
+        
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
     /*
      LLOGUERS
      */
@@ -150,7 +156,7 @@ public class Zona {
 
     public void tancarLloguer() {
         boolean trobat = false;
-
+        /*Treure les hamaques si tanques una ombrella*/
         int pos = seleccionarLloguer();
 
         if (pos != -1) {
