@@ -3,11 +3,9 @@ package element;
 
 import java.util.Scanner;
 
-/**
- *
- * @author fta
- */
-public class Hamaca {
+
+    
+    public class Hamaca extends ElementLloguer{
 
     private int codi;
     private static int properCodi = 0;
@@ -55,7 +53,7 @@ public class Hamaca {
     public void setLlogat(boolean pLlogat) {
         llogat = pLlogat;
     }
-
+    
     public static Hamaca novaHamaca() {
         Scanner dades = new Scanner(System.in);
 
@@ -112,3 +110,4 @@ public class Hamaca {
         } while (opcio != 0 && opcio != 1);
     }
 }
+    
