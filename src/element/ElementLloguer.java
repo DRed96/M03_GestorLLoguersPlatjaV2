@@ -1,77 +1,67 @@
+
 package element;
-
-
 import java.util.Scanner;
 
 
+public abstract class ElementLloguer {
     
-    public class Hamaca extends ElementLloguer{
-
     private int codi;
     private static int properCodi = 0;
     private String dataAlta;
     private boolean llogat;
 
-    public Hamaca(String pDataAlta) {
-        codi = properCodi;
-        properCodi++;
-        dataAlta = pDataAlta;
-        llogat = false;
-    }
+public ElementLloguer(String pdataAlta){
+    
+      codi = properCodi;
+      properCodi++;
+      dataAlta = pdataAlta;
+      llogat = false;
+}
 
-    /*
-     Mètodes accessors.
-     */
     public int getCodi() {
         return codi;
     }
 
-    public void setCodi() {
-        codi++;
+    public void setCodi(int codi) {
+        this.codi = codi;
     }
 
     public static int getProperCodi() {
         return properCodi;
     }
 
-    public static void setProperCodi() {
-        properCodi++;
+    public static void setProperCodi(int properCodi) {
+        ElementLloguer.properCodi = properCodi;
     }
 
     public String getDataAlta() {
         return dataAlta;
     }
 
-    public void setDataAlta(String pDataAlta) {
-        dataAlta = pDataAlta;
+    public void setDataAlta(String dataAlta) {
+        this.dataAlta = dataAlta;
     }
 
-    public boolean getLLogat() {
+    public boolean isLlogat() {
         return llogat;
     }
 
-    public void setLlogat(boolean pLlogat) {
-        llogat = pLlogat;
+    public void setLlogat(boolean llogat) {
+        this.llogat = llogat;
     }
     
-    public static Hamaca novaHamaca() {
+    public void modificarElement(){
         Scanner dades = new Scanner(System.in);
-
-        System.out.println("Data d'alta de l'hamaca:");
-
-        return new Hamaca(dades.next());
-    }
-
-    public void modificarHamaca() {
-        Scanner dades = new Scanner(System.in);
-        System.out.println("\nData d'alta de l'hamaca: " + dataAlta);
+        System.out.println("\nData d'alta: " + dataAlta);
         System.out.println("\nEntra la nova data d'alta:");
         dataAlta = dades.next();
         modificarEstatLloguer();
     }
-
-    public void mostrarHamaca() {
-        System.out.println("\nLes dades de l'hamaca amb codi " + codi + " són:");
+    
+    
+    public void mostrarElement(){
+        
+        System.out.println("\nLes dades amb codi " + codi + " són:");
         System.out.println("\nData d'alta:" + dataAlta);
         System.out.println("\nEstat de lloguer:");
         if (llogat) {
@@ -80,8 +70,8 @@ import java.util.Scanner;
             System.out.print("No llogada");
         }
     }
-
-    public void modificarEstatLloguer() {
+    
+    public void modificarEstatLloguer(){
         Scanner dades = new Scanner(System.in);
         int opcio;
 
@@ -93,7 +83,7 @@ import java.util.Scanner;
         }
 
         do {
-            System.out.println("\nEntra el nou estat de lloguer: (0 si no està llogada o 1 si està llogada)");
+            System.out.println("\nEntra el nou estat de lloguer: (0 si no està llogat o 1 si està llogat)");
             opcio = dades.nextInt();
 
             switch (opcio) {
@@ -109,5 +99,9 @@ import java.util.Scanner;
             }
         } while (opcio != 0 && opcio != 1);
     }
-}
     
+ 
+    }
+    
+    
+
