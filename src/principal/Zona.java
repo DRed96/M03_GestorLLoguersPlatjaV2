@@ -6,6 +6,9 @@ import element.Lloguer;
 import element.Encarregat;
 import java.util.Scanner;
 
+class ElementLloguer{
+
+}
 /**
  *
  * @author fta
@@ -15,12 +18,14 @@ public class Zona {
     private String codi;
     private Lloguer lloguers[];
     private static int indexLloguers = 0;
+    private ElementLloguer elements [];
     private Velomar velomars[];
     private Ombrella ombrelles[];
     private Encarregat encarregats[];
 
     public Zona(String pCodi) {
         codi = pCodi;
+        elements = new ElementLloguer [28];
         lloguers = new Lloguer[300];
         velomars = new Velomar[5];
         ombrelles = new Ombrella[20];
@@ -30,6 +35,12 @@ public class Zona {
     /*
      Mètodes accessors.
      */
+    public ElementLloguer getElementLloguer(int i){
+        return elements[i];
+    }
+    
+    
+    /*
     public String getCodi() {
         return codi;
     }
@@ -77,13 +88,24 @@ public class Zona {
     public void setEncarregats(Encarregat[] encarregats) {
         this.encarregats = encarregats;
     }
+    */
+    /*
+        
+    */
+    public static Zona novaZona(String codi) {
+        Zona novaZona;
+        if(codi.isEmpty()== true){
+            Scanner dades = new Scanner(System.in);
+            String in;
+            System.out.println("Codi de la zona:");
+            in = dades.nextLine();
+            novaZona = new Zona(in);
+        }
+        else{
+            novaZona = new Zona(codi);
+        }
 
-    public static Zona novaZona() {
-        Scanner dades = new Scanner(System.in);
-
-        System.out.println("Codi de la zona:");
-
-        return new Zona(dades.next());
+        return novaZona;
     }
 
     public void mostrarZona() {
