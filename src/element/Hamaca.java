@@ -6,7 +6,7 @@ import java.util.Scanner;
 
     
     public class Hamaca extends ElementLloguer{
-          
+
     public Hamaca(String pDataAlta) {
         
         super(pDataAlta);
