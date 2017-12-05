@@ -38,6 +38,11 @@ public class Lloguer {
     /*
      Mètodes accessors.
      */
+    
+    public int getIdElementLloguer() {
+        return idElementLloguer;
+    }
+
     /*
     public int getCodi() {
         return codi;
@@ -71,10 +76,7 @@ public class Lloguer {
         dniEncarregat = pDniEncarregat;
     }
 
-    public int getIdElementLloguer() {
-        return idElementLloguer;
-    }
-
+    
     public void setIdElementLloguer(int pIdElementLloguer) {
         idElementLloguer = pIdElementLloguer;
     }

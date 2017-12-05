@@ -16,17 +16,13 @@ public class Zona implements Element{
     private String codi;
     private Lloguer lloguers[];
     private static int indexLloguers = 0;
-    private ElementLloguer elements [];
-    private Velomar velomars[];
-    private Ombrella ombrelles[];
+    private ElementLloguer elementsLloguer [];
     private Encarregat encarregats[];
 
     public Zona(String pCodi) {
         codi = pCodi;
-        elements = new ElementLloguer [28];
+        elementsLloguer = new ElementLloguer [28];
         lloguers = new Lloguer[300];
-        velomars = new Velomar[5];
-        ombrelles = new Ombrella[20];
         encarregats = new Encarregat[3];
     }
 
@@ -34,14 +30,17 @@ public class Zona implements Element{
      Mètodes accessors.
      */
     
-    /*
     public String getCodi() {
         return codi;
     }
-
+    
     public void setCodi(String pCodi) {
         codi = pCodi;
     }
+    /*
+    
+
+    
 
     public Lloguer[] getLloguers() {
         return lloguers;
@@ -57,22 +56,6 @@ public class Zona implements Element{
 
     public void setIndexLloguers(int pIndexLloguers) {
         indexLloguers = pIndexLloguers;
-    }
-
-    public Velomar[] getVelomars() {
-        return velomars;
-    }
-
-    public void setVelomars(Velomar[] velomars) {
-        this.velomars = velomars;
-    }
-
-    public Ombrella[] getOmbrelles() {
-        return ombrelles;
-    }
-
-    public void setOmbrelles(Ombrella[] ombrelles) {
-        this.ombrelles = ombrelles;
     }
 
     public Encarregat[] getEncarregats() {
@@ -116,18 +99,11 @@ public class Zona implements Element{
                 lloguers[i].mostrarLloguer();
             }
         }
-
-        System.out.println("\nOmbrel.les:");
-        for (int i = 0; i < ombrelles.length; i++) {
-            if (ombrelles[i] != null) {
-                ombrelles[i].mostrarOmbrella();
-            }
-        }
-
-        System.out.println("\nVelomars:");
-        for (int i = 0; i < velomars.length; i++) {
-            if (velomars[i] != null) {
-                velomars[i].mostrarVelomar();
+        
+        System.out.println("\nElements de lloguer");
+        for (int i = 0; i < elementsLloguer.length; i++) {
+            if (elementsLloguer[i] != null) {
+                elementsLloguer[i].mostrarElement();
             }
         }
 
@@ -141,10 +117,11 @@ public class Zona implements Element{
 
     @Override
     public void modificarElement() {
-        
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Scanner dades = new Scanner(System.in);
+        System.out.println("\nEscriu un nou codi de zona");
+        System.out.println("Codi anterior: "+this.getCodi());
+        this.setCodi(dades.nextLine());
     }
-    
     
     /*
      LLOGUERS
@@ -160,6 +137,13 @@ public class Zona implements Element{
         int pos = seleccionarLloguer();
 
         if (pos != -1) {
+            
+            for(int i = 0; i < elementsLloguer.length; i++){
+                if (elementsLloguer[i] !=null && elementsLloguer[i].getCodi() == lloguers[pos].getIdElementLloguer()){
+                    
+                }
+            }
+            
             for (int i = 0; i < velomars.length; i++) {
                 if (velomars[i] != null && velomars[i].getCodi() == lloguers[pos].getIdElementLloguer()) {
                     velomars[i].setLlogat(false);
