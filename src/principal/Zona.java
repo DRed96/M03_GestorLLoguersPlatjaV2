@@ -138,26 +138,29 @@ public class Zona implements Element{
                 return i;
             }
         }
-        return elementsLloguer.length;
+        return -1;
     }
     
     public void tancarLloguer() {
-        boolean trobat = false;
         /*Treure les hamaques si tanques una ombrella*/
         int pos = seleccionarLloguer();
         
         if (pos != -1) {
+            //Aquest mètode busca el codi d'element amb el lloguer a esborrar
+            //També hem afegit una comprovacio
             int index = trobarIndexElementLloguer(pos);
-            
-            if(elementsLloguer[index] instanceof Ombrella){
-                Ombrella omb = (Ombrella) elementsLloguer[index];
-                Hamaca ham [] = omb.getHamaques();
-                for (int j = 0; j < ham.length; j++) {
-                    if (ham[j] != null) {
-                        ham[j].setLlogat(false);
+            if(index != -1){
+                if(elementsLloguer[index] instanceof Ombrella){
+                    Ombrella omb = (Ombrella) elementsLloguer[index];
+                    Hamaca ham [] = omb.getHamaques();
+                    for (int j = 0; j < ham.length; j++) {
+                        if (ham[j] != null) {
+                            ham[j].setLlogat(false);
+                        }
                     }
                 }
             }
+            
             elementsLloguer[index].setLlogat(false);
      
         }else{
@@ -182,32 +185,27 @@ public class Zona implements Element{
         return pos;
     }
 
-    /*
-     VELOMAR
-     */
-    public void afegirVelomar(Velomar velomar) {
+    public void afegirElementLloguer(ElementLloguer element){
         boolean trobat = false;
-
-        for (int i = 0; i < velomars.length && !trobat; i++) {
-            if (velomars[i] == null) {
-                velomars[i] = velomar;
+        for(int i = 0; i < elementsLloguer.length && !trobat; i++){
+            if (elementsLloguer[i] == null){
+                elementsLloguer[i] = element;
                 trobat = true;
             }
         }
-
     }
-
-    public void treureVelomar(int codi) {
+    
+    public void treureElementLloguer(int codi) {
         boolean trobat = false;
 
-        for (int i = 0; i < velomars.length && !trobat; i++) {
-            if (velomars[i] != null && velomars[i].getCodi() == codi) {
-                velomars[i] = null;
+        for (int i = 0; i < elementsLloguer.length && !trobat; i++) {
+            if (elementsLloguer[i] != null && elementsLloguer[i].getCodi() == codi) {
+                elementsLloguer[i] = null;
                 trobat = true;
             }
         }
-
     }
+
 
     public int seleccionarVelomar(int codi) {
         int pos = -1;

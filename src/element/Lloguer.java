@@ -42,11 +42,13 @@ public class Lloguer {
     public int getIdElementLloguer() {
         return idElementLloguer;
     }
-
-    /*
+    
     public int getCodi() {
         return codi;
     }
+    
+    /*
+    
 
     public void setCodi() {
         codi++;
