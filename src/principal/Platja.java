@@ -1,8 +1,6 @@
 package principal;
 
-import element.Velomar;
-import element.Ombrella;
-import element.Hamaca;
+import element.Element;
 import element.Encarregat;
 import java.util.Scanner;
 
@@ -14,25 +12,63 @@ public class Platja {
 
     private String coordenades;
     private String nom;
-    private Velomar velomars[];
-    private Ombrella ombrelles[];
-    private static Hamaca hamaques[];
+    private Element Elements[];
     private Encarregat encarregats[];
     private static Zona zones[];
 
     public Platja(String pCoordenades, String pNom) {
         coordenades = pCoordenades;
         nom = pNom;
-        velomars = new Velomar[50];
-        ombrelles = new Ombrella[200];
-        hamaques = new Hamaca[800];
-        encarregats = new Encarregat[30];
-        zones = new Zona[10];
+        Elements = new Element[1100];
+
     }
 
+    public String getCoordenades() {
+        return coordenades;
+    }
+
+    public void setCoordenades(String coordenades) {
+        this.coordenades = coordenades;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public Element[] getElements() {
+        return Elements;
+    }
+
+    public void setElements(Element[] Elements) {
+        this.Elements = Elements;
+    }
+
+    public Encarregat[] getEncarregats() {
+        return encarregats;
+    }
+
+    public void setEncarregats(Encarregat[] encarregats) {
+        this.encarregats = encarregats;
+    }
+
+    public static Zona[] getZones() {
+        return zones;
+    }
+
+    public static void setZones(Zona[] zones) {
+        Platja.zones = zones;
+    }
+
+    
+    
+    
     /*
      Mètodes accessors.
-     */
+     *
     public String getCoordenades() {
         return coordenades;
     }
@@ -88,7 +124,7 @@ public class Platja {
     public void setZones(Zona[] pZones) {
         zones = pZones;
     }
-
+*/
     public static Platja novaPlatja() {
         Scanner dades = new Scanner(System.in);
         String coordenadesNoves;
@@ -102,7 +138,7 @@ public class Platja {
 
         return new Platja(coordenadesNoves, nomNou);
     }
-
+/*
     public void modificarPlatja() {
         Scanner dades = new Scanner(System.in);
         System.out.println("\nNom de la  platja: " + nom);
@@ -151,7 +187,7 @@ public class Platja {
 
     /*
      VELOMAR
-     */
+     *//*
     public void afegirVelomar() {
         boolean trobat = false;
         for (int i = 0; i < velomars.length && !trobat; i++) {
@@ -188,7 +224,7 @@ public class Platja {
 
     /*
     OMBREL.LA
-     */
+     *//*
     public void afegirOmbrella() {
         boolean trobat = false;
         for (int i = 0; i < ombrelles.length && !trobat; i++) {
@@ -225,7 +261,7 @@ public class Platja {
 
     /*
     HAMACA
-     */
+     *//*
     public void afegirHamaca() {
         boolean trobat = false;
         for (int i = 0; i < hamaques.length && !trobat; i++) {
@@ -262,7 +298,7 @@ public class Platja {
 
     /*
     ZONA
-     */
+     *//*
     public void afegirZona() {
         boolean trobat = false;
         int pos = seleccionarZona();
@@ -306,7 +342,7 @@ public class Platja {
 
     /*
     ENCARREGAT
-     */
+     *//*
     public void afegirEncarregat(String dni) {
         boolean trobat = false;
         int pos = seleccionarEncarregat();
@@ -347,4 +383,46 @@ public class Platja {
         }
         return pos;
     }
-}
+}*/
+
+    
+    public void afegirElement(String dni) {
+        boolean trobat = false;
+        int pos = seleccionarElement();
+
+        if (pos == -1) {
+            for (int i = 0; i < Element.length && !trobat; i++) {
+                if (Elements[i] == null) {
+                    Elements[i] = Element.nouElement(num);
+                    trobat = true;
+                }
+            }
+        } else {
+            System.out.println("L'encarregat ja està assignat a la platja");
+        }
+
+    }
+
+    public void treureElement() {
+        int pos = seleccionarElement();
+
+        if (pos != -1) {
+            Elements[pos] = null;
+        } else {
+            System.out.println("L'element no és d'aquesta platja.");
+        }
+    }
+
+    public int seleccionarElement() {
+        Scanner dades = new Scanner(System.in);
+        System.out.println("\nQuin tipus d'element es vol fagir)(1=Velomar, 2=Ombrella, 3=Hamaca, 4=Encarregat 5=Zona:");
+        int num = dades.next();
+        int pos = -1;
+        for (int i = 0; i < encarregats.length; i++) {
+            if (Elements[i] != null && Elements[i].getNum().equals(num)) {
+                pos = i;
+                return pos;
+            }
+        }
+        return pos;
+    }

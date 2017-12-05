@@ -8,26 +8,25 @@ import java.util.Scanner;
  *
  * @author fta
  */
-public class Lloguer {
+    public class Lloguer extends ElementLloguer{
 
     private static final double VALOR = 8.0;
     private int codi;
     private static int properCodi = 0;
     private String codiZona;
     private String dniEncarregat;
-    private int idElementLloguer;
     private String dniClient;
     private LocalTime horaLloguer;
     private LocalTime tempsLloguer;
     private double totalPagar;
     private boolean pagat;
 
-    public Lloguer(String pCodiZona, String pDniEncarregat, int pIdElementLloguer, String pDniClient, LocalTime pTempsLloguer, double pTotalPagar, boolean pPagat) {
+    public Lloguer(String pCodiZona, String pDniEncarregat, String pDniClient, LocalTime pTempsLloguer, double pTotalPagar, boolean pPagat) {
         codi = properCodi;
         properCodi++;
         codiZona = pCodiZona;
         dniEncarregat = pDniEncarregat;
-        idElementLloguer = pIdElementLloguer;
+        
         dniClient = pDniClient;
         horaLloguer = LocalTime.now();
         tempsLloguer = pTempsLloguer;

@@ -12,7 +12,7 @@ public class Aplicacio {
     private static Platja[] platges = new Platja[4];//Platges d'illa Tortuga
     private static int indexPlatges = 0; //La propera posició buida del vector platges
     private static Platja platjaActual = null; //PlatjaSeleccionada
-
+    private static int tipusElement
     public static void main(String[] args) {
         //Zona test = Zona.novaZona("");
         
