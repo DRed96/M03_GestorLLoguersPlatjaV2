@@ -132,13 +132,13 @@ public class Zona implements Element{
         indexLloguers++;
     }
     
-    private int trobarElementTancar(int pos){
+    private int trobarIndexElementLloguer(int pos){
         for(int i = 0; i < elementsLloguer.length; i++){
             if (elementsLloguer[i] !=null && elementsLloguer[i].getCodi() == lloguers[pos].getIdElementLloguer()){
                 return i;
             }
         }
-        return -1;
+        return elementsLloguer.length;
     }
     
     public void tancarLloguer() {
@@ -147,7 +147,7 @@ public class Zona implements Element{
         int pos = seleccionarLloguer();
         
         if (pos != -1) {
-            int index = trobarElementTancar(pos);
+            int index = trobarIndexElementLloguer(pos);
             
             if(elementsLloguer[index] instanceof Ombrella){
                 Ombrella omb = (Ombrella) elementsLloguer[index];
@@ -159,6 +159,7 @@ public class Zona implements Element{
                 }
             }
             elementsLloguer[index].setLlogat(false);
+     
         }else{
             System.out.println("\nEl lloguer no existeix");
         }
