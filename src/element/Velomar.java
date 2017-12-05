@@ -7,7 +7,7 @@ import java.util.Scanner;
  *
  * @author fta
  */
-public class Velomar {
+public class Velomar extends ElementLloguer{
 
     private boolean tobogan;
   
@@ -21,6 +21,17 @@ public class Velomar {
     /*
      Mètodes accessors.    
      */
+
+    public boolean isTobogan() {
+        return tobogan;
+    }
+
+    public void setTobogan(boolean tobogan) {
+        this.tobogan = tobogan;
+    }
+    
+    
+    
    
     public static Velomar nouVelomar() {
         Scanner dades = new Scanner(System.in);
@@ -50,12 +61,14 @@ public class Velomar {
         return new Velomar(dataAltaVelomar, toboganVelomar);
     }
 
-    public void modificarVelomar() {
+    public void modificarVelomar() {      
+        String da;
+        da = super.getDataAlta();
         Scanner dades = new Scanner(System.in);
         int opcio;
-        System.out.println("\nData d'alta del velomar: " + dataAlta);
+        System.out.println("\nData d'alta del velomar: " + da);
         System.out.println("\nEntra la nova data d'alta:");
-        dataAlta = dades.next();
+        da = dades.next();
 
         System.out.println("\nEl velomar ");
         if (tobogan) {
@@ -85,8 +98,14 @@ public class Velomar {
     }
 
     public void mostrarVelomar() {
-        System.out.println("\nLes dades del velomar amb codi " + codi + " són:");
-        System.out.println("\nData d'alta:" + dataAlta);
+        Boolean llo;
+        llo = super.isLlogat();
+        int co;
+        co = super.getCodi();
+        String da;
+        da = super.getDataAlta();
+        System.out.println("\nLes dades del velomar amb codi " + co + " són:");
+        System.out.println("\nData d'alta:" + da);
 
         System.out.println("\nEl velomar ");
         if (tobogan) {
@@ -96,7 +115,7 @@ public class Velomar {
         }
 
         System.out.println("\nEstat de lloguer:");
-        if (llogat) {
+        if (llo) {
             System.out.print("Llogat");
         } else {
             System.out.print("No llogat");
@@ -104,11 +123,13 @@ public class Velomar {
     }
 
     public void modificarEstatLloguer() {
+        Boolean llo;
+        llo = super.isLlogat();
         Scanner dades = new Scanner(System.in);
         int opcio;
 
         System.out.println("\nL'estat actual de lloguer és: ");
-        if (llogat) {
+        if (llo) {
             System.out.print("Llogat");
         } else {
             System.out.print("No llogat");
@@ -120,10 +141,10 @@ public class Velomar {
 
             switch (opcio) {
                 case 0:
-                    llogat = true;
+                    llo = true;
                     break;
                 case 1:
-                    llogat = false;
+                    llo = false;
                     break;
                 default:
                     System.out.println("\nEl valor introduit no és correcte");
