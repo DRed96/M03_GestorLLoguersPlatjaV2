@@ -9,63 +9,19 @@ import java.util.Scanner;
  */
 public class Velomar {
 
-    private int codi;
-    private static int properCodi = 0;
-    private String dataAlta;
     private boolean tobogan;
-    private boolean llogat;
+  
 
     public Velomar(String pDataAlta, boolean pTobogan) {
-        codi = properCodi;
-        properCodi++;
-        dataAlta = pDataAlta;
+ 
+        super(pDataAlta);
         tobogan = pTobogan;
-        llogat = false;
     }
 
     /*
      Mètodes accessors.    
      */
-    public int getCodi() {
-        return codi;
-    }
-
-    public void setCodi(int pCodi) {
-        codi = pCodi;
-    }
-
-    public static int getProperCodi() {
-        return properCodi;
-    }
-
-    public static void setProperCodi() {
-        properCodi++;
-    }
-
-    public String getDataAlta() {
-        return dataAlta;
-    }
-
-    public void setDataAlta(String pDataAlta) {
-        dataAlta = pDataAlta;
-    }
-
-    public boolean getTobogan() {
-        return tobogan;
-    }
-
-    public void setTobogan(boolean pTobogan) {
-        tobogan = pTobogan;
-    }
-
-    public boolean getLLogat() {
-        return llogat;
-    }
-
-    public void setLlogat(boolean pLlogat) {
-        llogat = pLlogat;
-    }
-
+   
     public static Velomar nouVelomar() {
         Scanner dades = new Scanner(System.in);
         String dataAltaVelomar;

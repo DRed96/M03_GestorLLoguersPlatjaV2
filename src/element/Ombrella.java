@@ -7,49 +7,20 @@ import java.util.Scanner;
  *
  * @author fta
  */
-public class Ombrella {
+public class Ombrella extends ElementLloguer{
 
-    private int codi;
-    private static int properCodi = 0;
-    private String dataAlta;
     private Hamaca[] hamaques;
-    private boolean llogat;
 
     public Ombrella(String pDataAlta) {
-        codi = properCodi;
-        properCodi++;
+        
+        super(pDataAlta);
         hamaques = new Hamaca[4];
-        dataAlta = pDataAlta;
-        llogat = false;
+
     }
 
     /*
      Mètodes accessors.
      */
-    public int getCodi() {
-        return codi;
-    }
-
-    public void setCodi() {
-        codi++;
-    }
-
-    public static int getProperCodi() {
-        return properCodi;
-    }
-
-    public static void setProperCodi() {
-        properCodi++;
-    }
-
-    public String getDataAlta() {
-        return dataAlta;
-    }
-
-    public void setDataAlta(String pDataAlta) {
-        dataAlta = pDataAlta;
-    }
-
     public Hamaca[] getHamaques() {
         return hamaques;
     }
@@ -58,13 +29,7 @@ public class Ombrella {
         hamaques = pHamaques;
     }
 
-    public boolean getLLogat() {
-        return llogat;
-    }
-
-    public void setLlogat(boolean pLlogat) {
-        llogat = pLlogat;
-    }
+  
 
     public static Ombrella novaOmbrella() {
         Scanner dades = new Scanner(System.in);
@@ -75,18 +40,26 @@ public class Ombrella {
     }
 
     public void modificarOmbrella() {
+        String dt;
+        dt = super.getDataAlta();
         Scanner dades = new Scanner(System.in);
-        System.out.println("\nData d'alta de l'ombrel.la: " + dataAlta);
+        System.out.println("\nData d'alta de l'ombrel.la: " + dt);
         System.out.println("\nEntra la nova data d'alta:");
-        dataAlta = dades.next();
+        dt = dades.next();
         modificarEstatLloguer();
     }
 
     public void mostrarOmbrella() {
-        System.out.println("\nLes dades de l'ombrel.la amb codi " + codi + " són:");
-        System.out.println("\nData d'alta:" + dataAlta);
+        String dt;
+        dt = super.getDataAlta();
+        int co;
+        co = super.getCodi();
+        Boolean llo;
+        llo = super.isLlogat();
+        System.out.println("\nLes dades de l'ombrel.la amb codi " + co + " són:");
+        System.out.println("\nData d'alta:" + dt);
         System.out.println("\nEstat de lloguer:");
-        if (llogat) {
+        if (llo) {
             System.out.print("Llogada");
         } else {
             System.out.print("No llogada");
@@ -130,11 +103,13 @@ public class Ombrella {
     }
 
     public void modificarEstatLloguer() {
+        Boolean llo;
+        llo = super.isLlogat();
         Scanner dades = new Scanner(System.in);
         int opcio;
 
         System.out.println("\nL'estat actual de lloguer és: ");
-        if (llogat) {
+        if (llo) {
             System.out.print("Llogada");
         } else {
             System.out.print("No llogada");
@@ -146,10 +121,10 @@ public class Ombrella {
 
             switch (opcio) {
                 case 0:
-                    llogat = true;
+                    llo = true;
                     break;
                 case 1:
-                    llogat = false;
+                    llo = false;
                     break;
                 default:
                     System.out.println("\nEl valor introduit no és correcte");
