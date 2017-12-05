@@ -2,6 +2,7 @@ package principal;
 
 import element.Velomar;
 import element.Ombrella;
+import element.Hamaca;
 import element.Lloguer;
 import element.Encarregat;
 import element.Element;
@@ -130,42 +131,34 @@ public class Zona implements Element{
         lloguers[indexLloguers] = lloguer;
         indexLloguers++;
     }
-
+    
+    private int trobarElementTancar(int pos){
+        for(int i = 0; i < elementsLloguer.length; i++){
+            if (elementsLloguer[i] !=null && elementsLloguer[i].getCodi() == lloguers[pos].getIdElementLloguer()){
+                return i;
+            }
+        }
+        return -1;
+    }
+    
     public void tancarLloguer() {
         boolean trobat = false;
         /*Treure les hamaques si tanques una ombrella*/
         int pos = seleccionarLloguer();
-
+        
         if (pos != -1) {
+            int index = trobarElementTancar(pos);
             
-            for(int i = 0; i < elementsLloguer.length; i++){
-                if (elementsLloguer[i] !=null && elementsLloguer[i].getCodi() == lloguers[pos].getIdElementLloguer()){
-                    
-                }
-            }
-            
-            for (int i = 0; i < velomars.length; i++) {
-                if (velomars[i] != null && velomars[i].getCodi() == lloguers[pos].getIdElementLloguer()) {
-                    velomars[i].setLlogat(false);
-                    trobat = true;
-                }
-            }
-
-            if (!trobat) {
-                for (int i = 0; i < ombrelles.length; i++) {
-                    if (ombrelles[i] != null && ombrelles[i].getCodi() == lloguers[pos].getIdElementLloguer()) {
-                        ombrelles[i].setLlogat(false);
-
-                        for (int j = 0; j < ombrelles[i].getHamaques().length; j++) {
-                            if (ombrelles[i].getHamaques()[j] != null) {
-                                ombrelles[i].getHamaques()[j].setLlogat(false);
-                            }
-                        }
-
-                        trobat = true;
+            if(elementsLloguer[index] instanceof Ombrella){
+                Ombrella omb = (Ombrella) elementsLloguer[index];
+                Hamaca ham [] = omb.getHamaques();
+                for (int j = 0; j < ham.length; j++) {
+                    if (ham[j] != null) {
+                        ham[j].setLlogat(false);
                     }
                 }
             }
+            elementsLloguer[index].setLlogat(false);
         }else{
             System.out.println("\nEl lloguer no existeix");
         }

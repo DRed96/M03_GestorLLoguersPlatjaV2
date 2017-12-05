@@ -12,10 +12,8 @@ public class Ombrella extends ElementLloguer{
     private Hamaca[] hamaques;
 
     public Ombrella(String pDataAlta) {
-        
         super(pDataAlta);
         hamaques = new Hamaca[4];
-
     }
 
     /*
