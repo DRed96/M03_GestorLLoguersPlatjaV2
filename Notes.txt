@@ -1,0 +1,14 @@
+Si ens carreguem les de composició ens hem de carrgar les filles.
+
+· Element? 0,5 punts
+M Elementlloguer ? 1 punt
+D Encarregat? 0,6 punts
+M Velomar? 0,6 punts
+M Ombrella? 0,6 punt
+M Hamaca? 0,6 punts
+• Zona? 1,75 punts
+• Platja? 1,75 punts
+D Lloguer? 0,8 punts
+• Aplicació ? 1,8 punts
+-------------------
+2.8 Punts Marc
