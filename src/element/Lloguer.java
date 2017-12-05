@@ -37,10 +37,17 @@ import java.util.Scanner;
     /*
      Mètodes accessors.
      */
-    /*
+    
+    public int getIdElementLloguer() {
+        return idElementLloguer;
+    }
+    
     public int getCodi() {
         return codi;
     }
+    
+    /*
+    
 
     public void setCodi() {
         codi++;
@@ -70,10 +77,7 @@ import java.util.Scanner;
         dniEncarregat = pDniEncarregat;
     }
 
-    public int getIdElementLloguer() {
-        return idElementLloguer;
-    }
-
+    
     public void setIdElementLloguer(int pIdElementLloguer) {
         idElementLloguer = pIdElementLloguer;
     }
