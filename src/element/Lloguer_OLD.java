@@ -8,26 +8,25 @@ import java.util.Scanner;
  *
  * @author fta
  */
-public class Lloguer {
+    public class Lloguer{
 
     private static final double VALOR = 8.0;
     private int codi;
     private static int properCodi = 0;
     private String codiZona;
     private String dniEncarregat;
-    private int idElementLloguer;
     private String dniClient;
     private LocalTime horaLloguer;
     private LocalTime tempsLloguer;
     private double totalPagar;
     private boolean pagat;
 
-    public Lloguer(String pCodiZona, String pDniEncarregat, int pIdElementLloguer, String pDniClient, LocalTime pTempsLloguer, double pTotalPagar, boolean pPagat) {
+    public Lloguer(String pCodiZona, String pDniEncarregat, String pDniClient, LocalTime pTempsLloguer, double pTotalPagar, boolean pPagat) {
         codi = properCodi;
         properCodi++;
         codiZona = pCodiZona;
         dniEncarregat = pDniEncarregat;
-        idElementLloguer = pIdElementLloguer;
+        
         dniClient = pDniClient;
         horaLloguer = LocalTime.now();
         tempsLloguer = pTempsLloguer;
@@ -38,9 +37,17 @@ public class Lloguer {
     /*
      Mètodes accessors.
      */
+    
+    public int getIdElementLloguer() {
+        return idElementLloguer;
+    }
+    
     public int getCodi() {
         return codi;
     }
+    
+    /*
+    
 
     public void setCodi() {
         codi++;
@@ -70,10 +77,7 @@ public class Lloguer {
         dniEncarregat = pDniEncarregat;
     }
 
-    public int getIdElementLloguer() {
-        return idElementLloguer;
-    }
-
+    
     public void setIdElementLloguer(int pIdElementLloguer) {
         idElementLloguer = pIdElementLloguer;
     }
@@ -117,7 +121,7 @@ public class Lloguer {
     public void setPagat(boolean pPagat) {
         pagat = pPagat;
     }
-
+    */
     public static Lloguer nouLloguer(Platja platja) {
         Scanner dades = new Scanner(System.in);
         String codiZonaNou = null;
