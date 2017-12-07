@@ -206,8 +206,7 @@ public class Zona implements Element{
         }
     }
 
-
-    public int seleccionarVelomar(int codi) {
+    public int seleccionarElementLloguer(int codi) {
         int pos = -1;
 
         if (codi == -1) {
@@ -216,8 +215,8 @@ public class Zona implements Element{
             codi = dades.nextInt();
         }
 
-        for (int i = 0; i < velomars.length; i++) {
-            if (velomars[i] != null && velomars[i].getCodi() == codi) {
+        for (int i = 0; i < elementsLloguer.length; i++) {
+            if (elementsLloguer[i] != null && elementsLloguer[i].getCodi() == codi) {
                 pos = i;
                 return pos;
             }
@@ -271,51 +270,4 @@ public class Zona implements Element{
 
         return pos;
     }
-
-    /*
-     OMBRELLA
-     */
-    public void afegirOmbrella(Ombrella ombrella) {
-        boolean trobat = false;
-
-        for (int i = 0; i < ombrelles.length && !trobat; i++) {
-            if (ombrelles[i] == null) {
-                ombrelles[i] = ombrella;
-                trobat = true;
-            }
-        }
-
-    }
-
-    public void treureOmbrella(int codi) {
-        boolean trobat = false;
-
-        for (int i = 0; i < ombrelles.length && !trobat; i++) {
-            if (ombrelles[i] != null && ombrelles[i].getCodi() == codi) {
-                ombrelles[i] = null;
-                trobat = true;
-            }
-        }
-
-    }
-
-    public int seleccionarOmbrella(int codi) {
-        int pos = -1;
-
-        if (codi == -1) {
-            Scanner dades = new Scanner(System.in);
-            System.out.println("\nCodi de l'ombrel.la?:");
-            codi = dades.nextInt();
-        }
-
-        for (int i = 0; i < ombrelles.length; i++) {
-            if (ombrelles[i] != null && ombrelles[i].getCodi() == codi) {
-                pos = i;
-                return pos;
-            }
-        }
-
-        return pos;
-    }
-
 }
