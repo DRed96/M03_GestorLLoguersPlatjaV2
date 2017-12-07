@@ -1,6 +1,5 @@
 package principal;
 
-import element.Velomar;
 import element.Ombrella;
 import element.Hamaca;
 import element.Lloguer;
@@ -38,11 +37,12 @@ public class Zona implements Element{
     public void setCodi(String pCodi) {
         codi = pCodi;
     }
+    
+    public ElementLloguer getElementsLloguer(int i){
+        return elementsLloguer[i];
+    }
     /*
     
-
-    
-
     public Lloguer[] getLloguers() {
         return lloguers;
     }
@@ -67,9 +67,7 @@ public class Zona implements Element{
         this.encarregats = encarregats;
     }
     
-    public ElementLloguer getElementLloguer(int i){
-        return elements[i];
-    }
+    
     */
     /*
         

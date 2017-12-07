@@ -8,7 +8,7 @@ import java.util.Scanner;
  *
  * @author fta
  */
-    public class Lloguer{
+    public class Lloguer_OLD{
 
     private static final double VALOR = 8.0;
     private int codi;

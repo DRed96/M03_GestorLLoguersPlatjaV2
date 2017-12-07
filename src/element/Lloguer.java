@@ -15,19 +15,19 @@ public class Lloguer {
     private static int properCodi = 0;
     private String codiZona;
     private String dniEncarregat;
-    private int idElementLloguer;
+    private ElementLloguer elementLloguer;
     private String dniClient;
     private LocalTime horaLloguer;
     private LocalTime tempsLloguer;
     private double totalPagar;
     private boolean pagat;
 
-    public Lloguer(String pCodiZona, String pDniEncarregat, int pIdElementLloguer, String pDniClient, LocalTime pTempsLloguer, double pTotalPagar, boolean pPagat) {
+    public Lloguer(String pCodiZona, String pDniEncarregat, ElementLloguer pElementLloguer, String pDniClient, LocalTime pTempsLloguer, double pTotalPagar, boolean pPagat) {
         codi = properCodi;
         properCodi++;
         codiZona = pCodiZona;
         dniEncarregat = pDniEncarregat;
-        idElementLloguer = pIdElementLloguer;
+        elementLloguer = pElementLloguer;
         dniClient = pDniClient;
         horaLloguer = LocalTime.now();
         tempsLloguer = pTempsLloguer;
@@ -38,6 +38,8 @@ public class Lloguer {
     /*
      Mètodes accessors.
      */
+    
+    /*
     public int getCodi() {
         return codi;
     }
@@ -117,12 +119,12 @@ public class Lloguer {
     public void setPagat(boolean pPagat) {
         pagat = pPagat;
     }
-
+    */
     public static Lloguer nouLloguer(Platja platja) {
         Scanner dades = new Scanner(System.in);
         String codiZonaNou = null;
         String dniEncarregatNou = null;
-        int idElementLloguerNou;
+        ElementLloguer idElementLloguerNou;
         String dniClientNou;
         LocalTime tempsLloguerNou;
         double totalPagarNou;
@@ -172,83 +174,58 @@ public class Lloguer {
         return new Lloguer(codiZonaNou, dniEncarregatNou, idElementLloguerNou, dniClientNou, tempsLloguerNou, totalPagarNou, estatPagat);
     }
 
-    public static int seleccionarElementLloguer(int posZona, Platja platja) {
+    public static ElementLloguer seleccionarElementLloguer(Platja platja, int posZona) {
         Scanner dades = new Scanner(System.in);
-        int opcio = 0, pos, codi = 0;
+        int opcio = 0, pos;
+        ElementLloguer element;
+        
+        element = demanaElementLloguer(platja,posZona);
+        
+        if(element instanceof Ombrella){
+            int hamaques = 0;
+            do {
+                System.out.println("Quantes hamaques vols?");
+                hamaques = dades.nextInt();
+                if (hamaques < 0 && hamaques > 4) {
+                    System.out.println("Selecciona una opció correcte");
+                }
+            } while (hamaques < 0 && hamaques > 4);
 
-        do {
-
-            switch (opcio) {
-                case 0:
-                    do {
-                        System.out.println("Selecciona un element:");
-                        System.out.println("1. Velomar.");
-                        System.out.println("2. Ombrel.la.");
-                        opcio = dades.nextInt();
-                        if (opcio != 1 && opcio != 2) {
-                            System.out.println("Selecciona una opció correcte");
-                        }
-                    } while (opcio != 1 && opcio != 2);
-                    break;
-
-                case 1:
-                    do {
-                        pos = platja.getZones()[posZona].seleccionarVelomar(-1);
-                        if (pos == -1) {
-                            System.out.println("\nEl velomar no existeix.");
-                        } else {
-                            platja.getZones()[posZona].getVelomars()[pos].setLlogat(true);
-                            codi = platja.getZones()[posZona].getVelomars()[pos].getCodi();
-                        }
-                    } while (pos == -1);
-                    break;
-
-                case 2:
-                    do {
-                        pos = platja.getZones()[posZona].seleccionarOmbrella(-1);
-                        if (pos == -1) {
-                            System.out.println("\nL'ombrel.la no existeix.");
-                        } else {
-                            platja.getZones()[posZona].getOmbrelles()[pos].setLlogat(true);
-                            codi = platja.getZones()[posZona].getOmbrelles()[pos].getCodi();
-                        }
-                    } while (pos == -1);
-
-                    int hamaques = 0;
-                    do {
-                        System.out.println("Quantes hamaques vols?");
-                        hamaques = dades.nextInt();
-                        if (hamaques < 0 && hamaques > 4) {
-                            System.out.println("Selecciona una opció correcte");
-                        }
-                    } while (hamaques < 0 && hamaques > 4);
-
-                    for (int i = 0; i < hamaques; i++) {
-                        do {
-                            pos = platja.seleccionarHamaca();
-                            if (pos == -1) {
-                                System.out.println("\nL'hamaca no existeix.");
-                            } else {
-                                platja.getZones()[posZona].getOmbrelles()[pos].afegirHamaca(platja.getHamaques()[pos]);
-                            }
-                        } while (pos == -1);
+            for (int i = 0; i < hamaques; i++) {
+                do {
+                    pos = platja.seleccionarHamaca();
+                    if (pos == -1) {
+                        System.out.println("\nL'hamaca no existeix.");
+                    } else {
+                        platja.getZones()[posZona].getOmbrelles()[pos].afegirHamaca(platja.getHamaques()[pos]);
                     }
-                    break;
-
-                default:
-                    System.out.println("Selecciona una opció correcta");
-                    break;
+                } while (pos == -1);
             }
-
-        } while (opcio == 0);
-
-        return codi;
+        }
+        
+        return element;
     }
-
+    
+    private static ElementLloguer demanaElementLloguer(Platja platja,int posZona){
+        int pos;
+        ElementLloguer element = null;
+        do {
+            pos = platja.getZones()[posZona].seleccionarElementLloguer(-1);
+            if (pos == -1) {
+                System.out.println("\nL'element de lloguer no existeix");
+            } else {
+                element = platja.getZones()[posZona].getElementsLloguer(pos);
+                element.setLlogat(true); 
+            }
+        } while (pos == -1);
+        
+        return element;
+    }
+    
     public void mostrarLloguer() {
         System.out.println("\nLes dades del lloguer amb codi " + codi + " són:");
         System.out.println("\nEncarregat: " + dniEncarregat);
-        System.out.println("\nElement lloguer: " + idElementLloguer);
+        System.out.println("\nCodi de l'element lloguer: " + elementLloguer.getCodi());
         System.out.println("\nClient: " + dniClient);
         System.out.println("\nHora lloguer: " + horaLloguer.getHour() + ":" + horaLloguer.getMinute() + ":" + horaLloguer.getSecond());
         System.out.println("\nTemps lloguer: " + tempsLloguer.getHour() + ":" + tempsLloguer.getMinute());
